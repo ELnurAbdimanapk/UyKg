@@ -10,7 +10,7 @@ export const Data = [
     district: "Alamedin",
     price: 500,
     image: house3,
-    otherImages: [{ house3 }, { house3 }, { house3 }, { house3 }, { house3 }],
+    otherImages: [house3 , house5 ,  house7 ,  house3 , house3 ],
   },
   {
     id: 2,

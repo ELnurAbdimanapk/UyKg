@@ -1,15 +1,11 @@
 import {
-  Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
-  IconButton,
+  Container,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useParams } from "react-router-dom";
 import { Data } from "../data";
 import Navbar from "../UI/Navbar";
@@ -32,32 +28,78 @@ const HouseCard = () => {
               return (
                 <>
                   <CardContent>
-                    <Typography variant="h6">{el.district}</Typography>
-                    <Typography variant="h5">${el.price}</Typography>
-                    <StyledTypography>Opisaniye</StyledTypography>
+                    <Typography variant="h3" ml={3}>
+                      {el.district}
+                    </Typography>
+                  </CardContent>
+                  <StyledCard>
+                    <div>
+                      <CardMedia
+                        component="img"
+                        image={el.otherImages[0]}
+                        alt="house"
+                        sx={{
+                          maxWidth: 450,
+                          height: 450,
+                          borderTopLeftRadius: 20,
+                          borderBottomLeftRadius: 20,
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <CardMedia
+                        component="img"
+                        image={el.otherImages[1]}
+                        alt="house"
+                        sx={{ maxWidth: 220, height: 220 }}
+                      />
+                      <CardMedia
+                        component="img"
+                        image={el.otherImages[1]}
+                        alt="house"
+                        sx={{ maxWidth: 220, height: 220, marginTop: 1.2 }}
+                      />
+                    </div>
+                    <div>
+                      <CardMedia
+                        component="img"
+                        image={el.otherImages[1]}
+                        alt="house"
+                        sx={{
+                          maxWidth: 220,
+                          height: 220,
+                          borderTopRightRadius: 20,
+                        }}
+                      />
+                      <CardMedia
+                        component="img"
+                        image={el.otherImages[1]}
+                        alt="house"
+                        sx={{
+                          maxWidth: 220,
+                          height: 220,
+                          borderBottomRightRadius: 20,
+                          marginTop: 1.2,
+                        }}
+                      />
+                    </div>
+                  </StyledCard>
+
+                  <CardContent>
+                    <Typography variant="h5" ml={-2} mt={5}>
+                      Отдельная комната в жилье типа остров бхозяин Отдельная
+                      комната в жилье типа остров бхозяин
+                    </Typography>
+                    <div style={{display:"flex",justifyContent:"space-between",width:300}}>
+                      <Typography variant="p" ml={-2}> *2 спальня</Typography>
+                      <Typography variant="p" ml={-2}> *2 спальня</Typography>
+                      <Typography variant="p" ml={-2}> *2 спальня</Typography>
+                    </div>
                   </CardContent>
                 </>
               );
             }
           })}
-        </div>
-        <div>
-          <CardActions>
-            <IconButton>
-              <FavoriteIcon />
-            </IconButton>
-          </CardActions>
-          {Array.isArray(house.otherImages) &&
-            house.otherImages.map((el) => {
-              console.log(el);
-              return (
-                <StyledCard>
-                  <StyledCardMedia>
-                    <CardMedia component="img" image={el.house3} alt="house" />
-                  </StyledCardMedia>
-                </StyledCard>
-              );
-            })}
         </div>
       </StyledContainer>
     </>
@@ -66,29 +108,23 @@ const HouseCard = () => {
 
 export default HouseCard;
 
-const StyledContainer = styled("div")`
+const StyledContainer = styled(Container)`
   margin: auto;
   margin-top: 100px;
   display: flex;
   justify-content: space-around;
 `;
 
-const StyledCardMedia = styled(CardActionArea)`
-  background-color: red;
-  width: 100%;
-`;
-
-const StyledCard = styled(Card)`
-  width: 800px;
-  height: 500px;
+const StyledCard = styled("div")`
+  border-radius: 10px;
+  width: 900px;
+  height: 450px;
   text-align: center;
   margin: auto;
   margin-top: 10px;
-  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 220px;
 `;
 
-const StyledTypography = styled(Typography)`
-  width: 500px;
-  height: 500px;
-  margin-top: 1000px;
-`;
+
